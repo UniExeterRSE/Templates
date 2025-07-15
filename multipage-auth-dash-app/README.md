@@ -163,11 +163,8 @@ uv run pytest
 
 # Test just one part (faster for development)
 uv run pytest tests/auth/
-uv run pytest tests/core/
+uv run pytest tests/app/
 
-# See what's covered by tests
-uv run pytest --cov=src
-```
 
 
 
