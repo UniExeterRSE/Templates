@@ -110,7 +110,7 @@ def _process_uploaded_images(
         raise ValueError("No authenticated user found")
 
     user_dir = get_user_directory(username)
-    mothermachine_dir = Path(user_dir, "mothermachine_images")
+    image_dir = Path(user_dir, "images")
 
     saved_files = []
     errors = []
@@ -122,7 +122,7 @@ def _process_uploaded_images(
             validate_image_content(decoded_content)
 
             saved_path = save_image_from_bytes(
-                decoded_content, filename, mothermachine_dir
+                decoded_content, filename, image_dir
             )
             saved_files.append(saved_path.name)
 
@@ -189,9 +189,9 @@ def download_images_and_review(n_clicks: int, contents: List[str]) -> list:
     try:
         username = get_current_username()
 
-        user_folder = get_user_directory(username)
-        mothermachine_folder = Path(user_folder, "images")
-        images = get_image_arrays_from_folder(mothermachine_folder)
+        user_dir = get_user_directory(username)
+        images_dir = Path(user_dir, "images")
+        images = get_image_arrays_from_folder(images_dir)
         download_data = _create_download_zip(images)
 
         if not download_data:

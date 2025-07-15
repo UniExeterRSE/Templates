@@ -55,8 +55,7 @@ def create_page_layout():
             dbc.NavbarSimple(
                 brand="Example App",
                 fluid=True,
-                color="tertiary",
-                dark=True,
+                style={"width": "100%", "margin": "0"},
                 children=[
                     dbc.DropdownMenu(
                         id="auth-dropdown-menu",
@@ -82,7 +81,10 @@ def create_page_layout():
                     ),
                 ],
             ),
-            page_container,
-        ],
-        style={"margin-left": "40px", "margin-right": "30px"},
+            html.Div(style={"paddingBottom": "24px"}),  # Padding after navbar
+            html.Div(
+                page_container,
+                style={"padding": "24px 0"}  # Padding around page_container
+            ),
+        ]
     )

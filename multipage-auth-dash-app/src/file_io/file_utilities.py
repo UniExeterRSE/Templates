@@ -51,29 +51,6 @@ def get_user_directory(username: str) -> Path:
     return user_dir
 
 
-def create_timestamped_folder(user_dir: Path, subfolder: str = "mothermachine") -> Path:
-    """
-    Create a new folder with a timestamp in the user's subdirectory.
-
-    Parameters
-    ----------
-    user_dir : Path
-        User's base directory.
-    subfolder : str, optional
-        Subdirectory name (default: "mothermachine").
-
-    Returns
-    -------
-    Path
-        Path to the created timestamped folder.
-    """
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    target_dir = user_dir / subfolder
-    timestamped_dir = target_dir / timestamp
-    timestamped_dir.mkdir(parents=True, exist_ok=True)
-    return timestamped_dir
-
-
 def get_image_filenames(dir: Path) -> list[str]:
     """
     Get the path to the user's images directory.

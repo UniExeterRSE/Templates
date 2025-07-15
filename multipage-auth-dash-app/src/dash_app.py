@@ -36,7 +36,7 @@ def create_app():
     app = dash.Dash(
         __name__,
         server=server,
-        external_stylesheets=[dbc.themes.SOLAR],
+        external_stylesheets=[dbc.themes.LUMEN],
         use_pages=True,
         pages_folder="pages",  # Use standard pages folder
         suppress_callback_exceptions=True,

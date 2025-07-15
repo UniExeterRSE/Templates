@@ -159,7 +159,7 @@ class FileUtilitiesMockHelper:
         # Folder utilities
         self.user_path = Path("/mock/user/testuser")
         self.timestamped_path = Path(
-            "/mock/user/testuser/mothermachine/20250103_120000"
+            "/mock/user/testuser/images/20250103_120000"
         )
         # Image utilities
         self.zip_archive = BytesIO()
