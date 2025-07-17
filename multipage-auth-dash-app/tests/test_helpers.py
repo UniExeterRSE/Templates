@@ -55,7 +55,9 @@ class AuthenticationMockHelper:
         Simulate logging out the current user.
         """
         self._mock.is_authenticated.return_value = False
-        self._mock.get_current_username.return_value = None
+        self._mock.get_current_username.side_effect = PermissionError(
+            "No authenticated user found."
+        )
 
     def set_authentication_success(
         self, username="testuser", message="Login successful. Redirecting..."
@@ -158,9 +160,7 @@ class FileUtilitiesMockHelper:
     def __init__(self, mocker):
         # Folder utilities
         self.user_path = Path("/mock/user/testuser")
-        self.timestamped_path = Path(
-            "/mock/user/testuser/images/20250103_120000"
-        )
+        self.timestamped_path = Path("/mock/user/testuser/images/20250103_120000")
         # Image utilities
         self.zip_archive = BytesIO()
         self.zip_archive.write(b"Mock zip content for testing")

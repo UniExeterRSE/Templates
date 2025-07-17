@@ -24,13 +24,14 @@ def get_image_files(_) -> tuple[str, list[str]]:
     list of str
         Filenames of .tif images for the user, or an empty list if not logged in or no directory.
     """
-    username = get_current_username()
-    if username is None:
-        return "", []
+    try:
+        username = get_current_username()
 
-    user_dir = Path(get_user_directory(username), "images")
-    image_files = get_image_filenames(user_dir)
-    return str(user_dir), image_files
+        user_dir = Path(get_user_directory(username), "images")
+        image_files = get_image_filenames(user_dir)
+        return str(user_dir), image_files
+    except Exception:
+        return "", []
 
 
 @callback(

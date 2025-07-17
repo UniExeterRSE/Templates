@@ -110,11 +110,11 @@ def get_current_username() -> str:
 
     Raises
     ------
-    ValueError
+    PermissionError
         If no authenticated user is found.
     """
     if not is_authenticated():
-        raise ValueError("No authenticated user found")
+        raise PermissionError("No authenticated user found")
 
     return current_user.username
 

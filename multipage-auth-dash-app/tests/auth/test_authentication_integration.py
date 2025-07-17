@@ -137,7 +137,7 @@ class TestAuthenticationState:
     def test_get_username_when_not_authenticated(self, app_with_db):
         """Test get_current_username raises exception when not authenticated."""
         with app_with_db.test_request_context():
-            with pytest.raises(ValueError, match="No authenticated user found"):
+            with pytest.raises(PermissionError, match="No authenticated user found"):
                 get_current_username()
 
     def test_logout_functionality(self, app_with_db):
