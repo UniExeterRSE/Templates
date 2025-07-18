@@ -1,5 +1,3 @@
-import os
-
 from flask import Flask
 from flask_login import LoginManager, UserMixin
 from flask_session import Session
@@ -59,8 +57,7 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 
-# Only create tables if the database file does not exist
-db_path = server.config["SQLALCHEMY_DATABASE_URI"].replace("sqlite:///", "")
-if not os.path.exists(db_path):
-    with server.app_context():
-        user_db.create_all()
+db_uri = server.config["SQLALCHEMY_DATABASE_URI"]
+db_path = db_uri.replace("sqlite:///", "")
+with server.app_context():
+    user_db.create_all()
